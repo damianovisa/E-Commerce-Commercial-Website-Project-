@@ -26,6 +26,16 @@ class User{
 
     function login(){
 
+        $verified = false;
+
+        $dbPassword = $this->getPasswordByEmail();
+
+        if(password_verify($this->password, $dbPassword)){
+            $verified = true;
+        }
+
+        return $verified;
+        
     }
 
     function register(){
@@ -38,6 +48,10 @@ class User{
         return $statement->execute(['email' => $this->email,'fname' => $this->fname,'lname' => $this->lname,'password'=> $hashedPassword]);
     }
 
+    public function getMembershipProvider(){
+        return $this->membershipProvider;
+    }
+
     function getUserByEmail($email){
 
         $query = "SELECT * FROM user WHERE email = :email";
@@ -46,7 +60,7 @@ class User{
         
         $statement->execute(['email'=> $email]);
 
-        return $statement->fetchAll(\PDO::FETCH_CLASS, User::class);
+        return $statement->fetchAll(\PDO::FETCH_CLASS, User::class);    
     }
 
     function getPasswordByEmail(){

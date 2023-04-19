@@ -21,7 +21,7 @@ class UserController{
 
                         $this->user->setEmail($_POST['email']);
                         $this->user->setPassword($_POST['password']);
-                        $this->user = $this->user->getUserByUsername($_POST['email'])[0];
+                        $this->user = $this->user->getUserByEmail($_POST['email'])[0];
 
                         $this->user->$action();
                     }
