@@ -1,5 +1,4 @@
 <?php
-
 namespace database;
 
 class DBConnectionManager{
@@ -24,7 +23,7 @@ class DBConnectionManager{
 
         }catch(\PDOException $e){
 
-            print "Error!: " . $e->getMessage() . "<br/>";
+            //print "Error!: " . $e->getMessage() . "<br/>";
 
         }
 

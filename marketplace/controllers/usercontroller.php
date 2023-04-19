@@ -6,23 +6,43 @@ require(dirname(__DIR__)."/models/user.php");
 class UserController{
 
     function __construct(){
-        if(isset($_GET['action'])){
 
-            $action = $_GET['action'];
+        if(isset($_GET)){
+            if(isset($_GET['action'])){
 
-            $viewClass = "\\views\\"."User".ucfirst($action);
+                $action = $_GET['action'];
 
-            // Read the user information from the request
-            // and setup a user model object
-            $this->user = new \models\User();
+                $viewClass = "\\views\\"."User".ucfirst($action);
 
-            if(class_exists($viewClass)){
+                $this->user = new \models\User();
 
-            $view = new $viewClass($this->user);
+                if($action == 'login'){
+                    if(isset($_POST['email']) && isset($_POST['password']) ){
+
+                        $this->user->setUsername($_POST['email']);
+                        $this->user->setPassword($_POST['password']);
+                        $this->user = $this->user->getUserByUsername($_POST['email'])[0];
+
+                        $this->user->$action();
+                    }
+                }else if($action == 'register'){
+                    if(isset($_POST['email']) && isset($_POST['password']) ){
+
+                        $this->user->setUsername($_POST['username']);
+                        $this->user->setPassword($_POST['password']);
+
+                        $this->user->$action();
+                    }
+                }
+
+                if(class_exists($viewClass)){
+
+                $view = new $viewClass($this->user);
+
+                }
 
             }
-
-        }
+    }
     }
 }
 
