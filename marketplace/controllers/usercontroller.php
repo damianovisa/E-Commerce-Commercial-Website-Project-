@@ -19,7 +19,7 @@ class UserController{
                 if($action == 'login'){
                     if(isset($_POST['email']) && isset($_POST['password']) ){
 
-                        $this->user->setUsername($_POST['email']);
+                        $this->user->setEmail($_POST['email']);
                         $this->user->setPassword($_POST['password']);
                         $this->user = $this->user->getUserByUsername($_POST['email'])[0];
 
@@ -28,8 +28,10 @@ class UserController{
                 }else if($action == 'register'){
                     if(isset($_POST['email']) && isset($_POST['password']) ){
 
-                        $this->user->setUsername($_POST['username']);
+                        $this->user->setEmail($_POST['email']);
                         $this->user->setPassword($_POST['password']);
+                        $this->user->setFname($_POST['fname']);
+                        $this->user->setLname($_POST['lname']);
 
                         $this->user->$action();
                     }

@@ -9,6 +9,8 @@ class User{
     private $id;
     private $email;
     private $password;
+    private $fname;
+    private $lname;
 
 
     private $dbConnection;
@@ -27,7 +29,13 @@ class User{
     }
 
     function register(){
-        $query = "INSERT INTO user (email, password, enabled2fa) VALUES(:username, :password, :enabled2fa)";
+        $query = "INSERT INTO user (email,fname,lname,password_hash) VALUES(:email,:fname,:lname,:password)";
+
+        $statement = $this->dbConnection->prepare($query);
+
+        $hashedPassword = password_hash($this->password, PASSWORD_DEFAULT);
+
+        return $statement->execute(['email' => $this->email,'fname' => $this->fname,'lname' => $this->lname,'password'=> $hashedPassword]);
     }
 
     function getUserByEmail($email){
@@ -39,6 +47,17 @@ class User{
         $statement->execute(['email'=> $email]);
 
         return $statement->fetchAll(\PDO::FETCH_CLASS, User::class);
+    }
+
+    function getPasswordByEmail(){
+
+        $query = "SELECT password_hash FROM user WHERE email = :email";
+
+        $statement = $this->dbConnection->prepare($query);
+        
+        $statement->execute(['email'=> $this->email]);
+
+        return $statement->fetchColumn(0);
     }
 
     public function setEmail($email){
@@ -53,17 +72,41 @@ class User{
 
     }
 
+    public function setPassword($password){
+
+        $this->password = $password;
+
+    }
     public function getPassword(){
 
         return $this->password;
 
     }
 
-    public function setPassword($password){
+    public function setFname($fname){
 
-        $this->password = $password;
+        $this->fname = $fname;
 
     }
+    public function getFname(){
+
+        return $this->fname;
+
+    }
+
+    public function setLname($lname){
+
+        $this->lname = $lname;
+
+    }
+    public function getLname(){
+
+        return $this->lname;
+
+    }
+    
+
+    
 
 }
 
