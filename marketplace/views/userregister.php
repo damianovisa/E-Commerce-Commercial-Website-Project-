@@ -78,7 +78,7 @@
 
                     <div class="text-center text-lg-start mt-4 pt-2">
                     <input class="btn btn-primary btn-lg" name="action" type="submit" href="/Seller/register" value="Register">
-                        <p class="small fw-bold mt-2 pt-1 mb-0">Already have an account? <a href="http://localhost/marketplace/index.php?resource=user&action=login"
+                        <p class="small fw-bold mt-2 pt-1 mb-0">Already have an account? <a href="index.php?resource=user&action=login"
                             class="link-primary">Sign in</a></p>
                     </div>
 

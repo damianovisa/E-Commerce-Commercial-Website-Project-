@@ -56,7 +56,7 @@
 
                 <div class="text-center text-lg-start mt-4 pt-2">
                 <input class="btn btn-primary btn-lg" name="action" type="submit" href="/User/login" value="Login">
-                    <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="http://localhost/marketplace/index.php?resource=user&action=register"
+                    <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="index.php?resource=user&action=register"
                         class="link-primary">Register</a></p>
                 </div>
 
@@ -82,7 +82,7 @@ class UserLogin{
         if($this->user->login()){
             
             $this->user->getMembershipProvider()->login();
-            header('Location: http://localhost/marketplace/index.php?resource=user&action=register');
+            header('Location:index.php?resource=user&action=register');
 
         }else{
             echo 'Wrong credentials';
