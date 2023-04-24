@@ -30,8 +30,10 @@ class User{
 
         $dbPassword = $this->getPasswordByEmail();
 
-        if(password_verify($this->password, $dbPassword)){
-            $verified = true;
+        if(isset($_POST['password'])){
+            if(password_verify($_POST['password'], $dbPassword)){
+                $verified = true;
+            }
         }
 
         return $verified;

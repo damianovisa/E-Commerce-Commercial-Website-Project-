@@ -82,10 +82,17 @@ class UserLogin{
         if($this->user->login()){
             
             $this->user->getMembershipProvider()->login();
-            header('Location:index.php?resource=user&action=register');
+            header('Location:index.php?resource=user&action=home');
 
         }else{
-            echo 'Wrong credentials';
+            $this->message =  'Invalid credentials';
+            $this->render();
+        }
+    }
+
+    function render(){
+        if(($this->user->getEmail() != null) && ($this->user->getPassword() != null)){
+            echo $this->message;
         }
     }
 }
