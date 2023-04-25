@@ -16,6 +16,8 @@ class UserController{
 
                 $this->user = new \models\User();
 
+                $products = $this->user->getAll();
+
                 if($action == 'login'){
                     if(isset($_POST['email']) && isset($_POST['password']) ){
 
@@ -39,7 +41,9 @@ class UserController{
 
                 if(class_exists($viewClass)){
 
-                $view = new $viewClass($this->user);
+                    $view = new $viewClass($this->user);
+
+                    $view->render($products);
 
                 }
 

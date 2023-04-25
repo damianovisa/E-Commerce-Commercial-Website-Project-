@@ -24,6 +24,18 @@ class User{
         $this->membershipProvider = new \membershipprovider\MembershipProvider($this);
     }
 
+    function getAll(){
+
+        $query = "select * from product";
+
+        $statement = $this->dbConnection->prepare($query);
+
+        $statement->execute();
+
+        return $statement->fetchAll();
+
+    }
+
     function login(){
 
         $verified = false;

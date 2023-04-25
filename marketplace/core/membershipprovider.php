@@ -13,7 +13,7 @@ class MemberShipProvider{
         session_name("marketplace");
 
         session_start();
-
+        
         $_SESSION['email'] = $this->user->getEmail();
         $_SESSION['fname'] = $this->user->getFname();
 
