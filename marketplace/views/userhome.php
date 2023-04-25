@@ -29,38 +29,48 @@ class UserHome{
 
     function render(...$data){
         $products = $data[0];
-
-        $html = '<div class="container">';
-        $html .= '<div class="row">';
-
-        foreach($products as $item){
-            $html .= "<div class='col-sm-3 mb-5'>
-                        <div class='card shadow-sm h-100' >
-                        <div>
-                        <div class=''> 
-                        <div class='card-body'>
-                        <div class='text-center'>
-                        <h5 class='card-title'>".$item['name']."</h5>
-                        <p class='text-muted mb-4'>by ".$item['manufacturer']."</p>
-                        </div>
-                        <div class='d-flex justify-content-between total font-weight-bold mt-4'>";
-                        
-            $html .=   <?php if(isset($_SESSION['email'])) { ?>."
-                            <span><a href='#' class='btn btn-success'><?=_('Add to cart')?></a></span> 
-                            ".<?php }else{?>." <span><a href='#' class='btn btn-light disabled'><?=_('Add to cart')?></a></span><span>$".$item['price']."</span>".
-                                <?php }?>."</div>
-                                    </div>
-                                    </div>
-                                    </div>
-                                </div>
-                            </div>". <?php }?>."
-                        </div>
-                    </div>";
-        }
-        
-        echo $html;
-    }
-
-}
-
 ?>
+        <div class="container">
+        <div class="row">
+    
+     <?php  foreach($products as $item){?>
+            <div class="col-sm-3 mb-5">
+                <div class="card shadow-sm h-100" >
+                    <div>
+                        <div class=""> 
+                        <img src="../images/<?php echo $item['image']?>" class="card-img p-3" width="100%" height="250px"/>
+                        <div class="card-body">
+                        <div class="text-center">
+                        <h5 class="card-title"><?php echo $item['name'] ?></h5>
+                        <p class="text-muted mb-4">by <?php echo $item['manufacturer'] ?></p>
+                        </div>
+                        <div>
+                            <?php if(strlen($item['description']) > 28){?>
+                                <?=substr($item['description'],0,32)."...";?>
+                                
+                            <?php }else{?>
+                                <?=$item['description']?>
+                            <?php }?>
+                            
+                        </div>
+                        <div class="d-flex justify-content-between total font-weight-bold mt-4">
+                            <?php if(isset($_SESSION['email'])) {?>
+                                <span><a href="" class="btn btn-success"><?=_('Add to cart')?></a> <a href="" class="btn btn-outline-warning p-2"><i class="bi bi-pencil-fill"></i></a ></span><span>$<?php echo $item['price'] ?></span>
+                            <?php }else{?>
+                                <span><a href="#" class="btn btn-light disabled"><?=_('Add to cart')?></a></span><span>$<?php echo $item['price'] ?></span>
+                            <?php }?>
+                    
+                        </div>
+                    </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+                    
+        <?php }?>
+        
+<?php    
+    }
+}
+?>
+
