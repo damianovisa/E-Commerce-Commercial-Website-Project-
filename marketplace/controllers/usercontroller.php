@@ -20,6 +20,7 @@ class UserController{
 
                 if($action == 'login'){
                     if(isset($_POST['email']) && isset($_POST['password']) ){
+
                         $this->user->setEmail($_POST['email']);
                         $this->user->setPassword($_POST['password']);
                         $this->user = $this->user->getUserByEmail($_POST['email'])[0];
@@ -33,7 +34,7 @@ class UserController{
                         $this->user->setPassword($_POST['password']);
                         $this->user->setFname($_POST['fname']);
                         $this->user->setLname($_POST['lname']);
-                        header('location:index.php?action=login&resource=user');
+
                         $this->user->$action();
                     }
                 }
@@ -41,11 +42,9 @@ class UserController{
                 if(class_exists($viewClass)){
 
                     $view = new $viewClass($this->user);
-                    if($action == 'register'){
 
-                    }else{
-                        $view->render($products);
-                    }
+                    $view->render($products);
+
                 }
 
             }

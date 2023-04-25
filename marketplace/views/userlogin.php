@@ -1,5 +1,5 @@
-<?php namespace views; 
-include('includes/header.php');
+<?php namespace views;
+// include('includes/header.php');
 
 class UserLogin{
     private $user;
@@ -24,9 +24,9 @@ class UserLogin{
             echo $this->message;
         }
     }
-    
 }
 ?>
+
 
 <html>
 <head>
@@ -95,7 +95,6 @@ class UserLogin{
 </form>
 </section>
 <script src="/resources/validation.js"></script>
-<?php include('includes/footer.php');?>
+<?php //include('includes/footer.php');?>
 </body>
 </html>
-
