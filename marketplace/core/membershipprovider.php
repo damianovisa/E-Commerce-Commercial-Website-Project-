@@ -18,7 +18,6 @@ class MemberShipProvider{
         $_SESSION['fname'] = $this->user->getFname();
 
         setcookie('marketplaceuser', $this->user->getEmail(), time()+3600);
-        
     }
 
 }

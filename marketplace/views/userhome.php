@@ -1,4 +1,5 @@
-<?php namespace views; ?>
+<?php namespace views; 
+include('includes/header.php')?>
 
 <html lang="en">
 <head>
@@ -14,13 +15,11 @@
     <div class="row m-3 justify-content-center">
         <img src="../images/banner.jpg" style="width:90%; height:65vh" class="img-fluid">
     </div>
-
 </body>
 
 </html>
 
 <?php 
-
 class UserHome{
     private $user;
     function __construct($user){
@@ -69,8 +68,12 @@ class UserHome{
                     
         <?php }?>
         
-<?php    
+        
+<?php   
+include('includes/footer.php'); 
     }
 }
+
+
 ?>
 

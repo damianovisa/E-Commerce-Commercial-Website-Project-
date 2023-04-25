@@ -1,4 +1,32 @@
-<?php namespace views; ?>
+<?php namespace views; 
+include('includes/header.php');
+
+class UserLogin{
+    private $user;
+    private $message;
+
+    function __construct($user){
+        $this->user = $user;
+
+        if($this->user->login()){
+            
+            $this->user->getMembershipProvider()->login();
+            header('Location:index.php?resource=user&action=home');
+
+        }else{
+            $this->message =  'Invalid credentials';
+            $this->render();
+        }
+    }
+
+    function render(){
+        if(($this->user->getEmail() != null) && ($this->user->getPassword() != null)){
+            echo $this->message;
+        }
+    }
+    
+}
+?>
 
 <html>
 <head>
@@ -66,35 +94,8 @@
     </div>
 </form>
 </section>
-
+<script src="/resources/validation.js"></script>
+<?php include('includes/footer.php');?>
 </body>
 </html>
 
-<?php 
-
-class UserLogin{
-    private $user;
-    private $message;
-
-    function __construct($user){
-        $this->user = $user;
-
-        if($this->user->login()){
-            
-            $this->user->getMembershipProvider()->login();
-            header('Location:index.php?resource=user&action=home');
-
-        }else{
-            $this->message =  'Invalid credentials';
-            $this->render();
-        }
-    }
-
-    function render(){
-        if(($this->user->getEmail() != null) && ($this->user->getPassword() != null)){
-            echo $this->message;
-        }
-    }
-}
-
-?>

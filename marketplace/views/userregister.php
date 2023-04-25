@@ -1,4 +1,5 @@
-<?php namespace views; ?>
+<?php namespace views; 
+include('includes/header.php')?>
 
 <html>
 <head>
@@ -92,6 +93,8 @@
     </div>
 </form>
 </section>
+<script src="/resources/validation.js"></script>
+<?php include('includes/footer.php');?>
 </body>
 </html>
 
