@@ -68,6 +68,7 @@ class User{
         $hashedPassword = password_hash($this->password, PASSWORD_DEFAULT);
 
         return $statement->execute(['email' => $this->email,'fname' => $this->fname,'lname' => $this->lname,'password'=> $hashedPassword]);
+
     }
 
     public function getMembershipProvider(){

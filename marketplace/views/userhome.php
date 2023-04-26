@@ -34,7 +34,7 @@ class UserHome{
         $products = $data[0];
 
 ?>
-
+         
         <div class="container">
         <div class="row">
     
@@ -51,7 +51,7 @@ class UserHome{
                         </div>
                         <div>
                             <?php if(strlen($item['description']) > 28){?>
-                                <?=substr($item['description'],0,32)."...";?>
+                                <?=substr($item['description'],0,31)."...";?>
                                 
                             <?php }else{?>
                                 <?=$item['description']?>
