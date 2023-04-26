@@ -29,17 +29,17 @@
 
         <?php }?>
         
-        <?php if(isset($_SESSION['email']) || isset($_SESSION['seller_id'])) {?>
+        <?php if(isset($_COOKIE['marketplaceuser']) || isset($_SESSION['seller_id'])) {?>
         <li class="nav-item">
-          <a class="nav-link" href=""><?=_("Logout")?></a>
+          <a class="nav-link" href="index.php?action=logout&resource=user"><?=_("Logout")?></a>
         </li>
         <?php }else{?>
           
         <?php }?>
         
-        <?php if(isset($_SESSION['email']) || isset($_SESSION['seller_id'])) {?>
+        <?php if(isset($_COOKIE['marketplaceuser']) || isset($_SESSION['seller_id'])) {?>
         <li class="nav-item">
-          <a class="nav-link disabled "><?=_("Welcome")?> <?= $_SESSION['fname']?></a>
+          <a class="nav-link disabled "><?=_("Welcome")?> <?= $_COOKIE['marketplacefname']?></a>
         </li>
         <?php }else{?>
 
@@ -53,13 +53,13 @@
         
       </form>
 
-      <?php if(isset($_SESSION['email']) || isset($_SESSION['seller_id'])){?>
+      <?php if(isset($_COOKIE['marketplaceuser']) || isset($_SESSION['seller_id'])){?>
         <a class="btn btn-primary m-2" href="#"><?=_("Profile")?></a>
       <?php }else{?>
         <a class="btn btn-primary m-2" href="index.php?action=login&resource=user"><?=_("Sign in")?></a>
       <?php }?>
 
-      <?php if(isset($_SESSION['email'])){?>
+      <?php if(isset($_COOKIE['marketplaceuser'])){?>
       <a class="btn btn-outline-light btn-floating m-1" id="cartBtn" href="" role="button">
         <i class="bi bi-cart-fill pe-2"></i>
         <span class='badge badge-warning' id='lblCartCount' name="cartNb" ></span>

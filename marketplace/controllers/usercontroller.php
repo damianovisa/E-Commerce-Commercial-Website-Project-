@@ -37,6 +37,8 @@ class UserController{
 
                         $this->user->$action();
                     }
+                }else if($action == 'logout'){
+                    $this->user->$action();
                 }
 
                 if(class_exists($viewClass)){

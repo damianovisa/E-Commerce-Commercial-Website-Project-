@@ -1,5 +1,7 @@
 <?php namespace views; 
-include('includes/header.php');?>
+include('includes/header.php');
+require_once('core/membershipprovider.php');
+?>
 
 <html lang="en">
 <head>
@@ -30,7 +32,9 @@ class UserHome{
 
     function render(...$data){
         $products = $data[0];
+
 ?>
+
         <div class="container">
         <div class="row">
     
@@ -55,7 +59,7 @@ class UserHome{
                             
                         </div>
                         <div class="d-flex justify-content-between total font-weight-bold mt-4">
-                            <?php if(isset($_SESSION['email'])) {?>
+                            <?php if(isset($_COOKIE['marketplaceuser'])) {?>
                                 <span><a href="" class="btn btn-success"><?=_('Add to cart')?></a> <a href="" class="btn btn-outline-warning p-2"><i class="bi bi-pencil-fill"></i></a ></span><span>$<?php echo $item['price'] ?></span>
                             <?php }else{?>
                                 <span><a href="#" class="btn btn-light disabled"><?=_('Add to cart')?></a></span><span>$<?php echo $item['price'] ?></span>

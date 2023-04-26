@@ -52,6 +52,14 @@ class User{
         
     }
 
+    function logout(){
+
+        $this->membershipProvider->logout();
+
+        header('location:index.php?resource=user&action=login');
+
+    }
+
     function register(){
         $query = "INSERT INTO user (email,fname,lname,password_hash) VALUES(:email,:fname,:lname,:password)";
 
