@@ -18,28 +18,28 @@ class SellerController{
 
                 $products = $this->seller->getAll();
 
-                // if($action == 'login'){
-                //     if(isset($_POST['email']) && isset($_POST['password']) ){
+                if($action == 'login'){
+                    if(isset($_POST['email']) && isset($_POST['password']) ){
 
-                //         $this->user->setEmail($_POST['email']);
-                //         $this->user->setPassword($_POST['password']);
-                //         $this->user = $this->user->getUserByEmail($_POST['email'])[0];
+                        $this->seller->setEmail($_POST['email']);
+                        $this->seller->setPassword($_POST['password']);
+                        $this->seller = $this->seller->getSellerByEmail($_POST['email'])[0];
 
-                //         $this->user->$action();
-                //     }
-                // }else if($action == 'register'){
-                //     if(isset($_POST['email']) && isset($_POST['password']) ){
+                        $this->seller->$action();
+                    }
+                }else if($action == 'register'){
+                    if(isset($_POST['email']) && isset($_POST['password']) ){
 
-                //         $this->user->setEmail($_POST['email']);
-                //         $this->user->setPassword($_POST['password']);
-                //         $this->user->setFname($_POST['fname']);
-                //         $this->user->setLname($_POST['lname']);
+                        $this->seller->setEmail($_POST['email']);
+                        $this->seller->setPassword($_POST['password']);
+                        $this->seller->setFname($_POST['fname']);
+                        $this->seller->setLname($_POST['lname']);
 
-                //         $this->user->$action();
-                //     }
-                // }else if($action == 'logout'){
-                //     $this->user->$action();
-                // }
+                        $this->seller->$action();
+                    }
+                }else if($action == 'logout'){
+                    $this->seller->$action();
+                }
 
                 if(class_exists($viewClass)){
 
