@@ -1,17 +1,17 @@
 <?php namespace views;
 // include('includes/header.php');
 
-class UserLogin{
-    private $user;
+class SellerLogin{
+    private $seller;
     private $message;
 
-    function __construct($user){
-        $this->user = $user;
+    function __construct($seller){
+        $this->seller = $seller;
 
-        if($this->user->login()){
+        if($this->seller->login()){
             
-            $this->user->getMembershipProvider()->login();
-            header('Location:index.php?resource=user&action=home');
+            $this->seller->getMembershipProvider()->login();
+            header('Location:index.php?resource=seller&action=home');
 
         }else{
             $this->message =  'Invalid credentials';
@@ -20,7 +20,7 @@ class UserLogin{
     }
 
     function render(){
-        if(($this->user->getEmail() != null) && ($this->user->getPassword() != null)){
+        if(($this->seller->getEmail() != null) && ($this->seller->getPassword() != null)){
             echo $this->message;
         }
     }
@@ -79,12 +79,12 @@ class UserLogin{
                     <div class="form-check mb-0"> 
                     
                     </div>
-                    <a href="index.php?resource=seller&action=login" class="text-body">Sign in as a Seller</a>
+                    <a href="index.php?resource=user&action=login" class="text-body">Sign in as a User</a>
                 </div>
 
                 <div class="text-center text-lg-start mt-4 pt-2">
                 <input class="btn btn-primary btn-lg" name="action" type="submit" href="" value="Login">
-                    <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="index.php?resource=user&action=register"
+                    <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="index.php?resource=seller&action=register"
                         class="link-primary">Register</a></p>
                 </div>
 
