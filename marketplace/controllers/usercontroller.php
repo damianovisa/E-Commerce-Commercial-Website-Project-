@@ -46,6 +46,7 @@ class UserController{
                     $view = new $viewClass($this->user);
 
                     $view->render($products);
+                    
 
                 }
 

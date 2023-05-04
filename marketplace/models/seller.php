@@ -5,7 +5,7 @@ require_once(dirname(__DIR__)."/core/dbconnectionmanager.php");
 
 require(dirname(__DIR__)."/core/membershipprovider.php");
 
-class User{
+class Seller{
     private $id;
     private $email;
     private $password;
@@ -56,12 +56,12 @@ class User{
 
         $this->membershipProvider->logout();
 
-        header('location:index.php?resource=user&action=login');
+        header('location:index.php?resource=seller&action=login');
 
     }
 
     function register(){
-        $query = "INSERT INTO user (email,fname,lname,password_hash) VALUES(:email,:fname,:lname,:password)";
+        $query = "INSERT INTO seller (email,fname,lname,password_hash) VALUES(:email,:fname,:lname,:password)";
 
         $statement = $this->dbConnection->prepare($query);
 
@@ -75,20 +75,20 @@ class User{
         return $this->membershipProvider;
     }
 
-    function getUserByEmail($email){
+    function getSellerByEmail($email){
 
-        $query = "SELECT * FROM user WHERE email = :email";
+        $query = "SELECT * FROM seller WHERE email = :email";
 
         $statement = $this->dbConnection->prepare($query);
         
         $statement->execute(['email'=> $email]);
 
-        return $statement->fetchAll(\PDO::FETCH_CLASS, User::class);    
+        return $statement->fetchAll(\PDO::FETCH_CLASS, Seller::class);    
     }
 
     function getPasswordByEmail(){
 
-        $query = "SELECT password_hash FROM user WHERE email = :email";
+        $query = "SELECT password_hash FROM seller WHERE email = :email";
 
         $statement = $this->dbConnection->prepare($query);
         

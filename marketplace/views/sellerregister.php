@@ -74,12 +74,12 @@
                         <div class="form-check mb-0"> 
                         
                         </div>
-                        <a href="index.php?resource=seller&action=register" class="text-body">Register as a Seller</a>
+                        <a href="index.php?resource=user&action=register" class="text-body">Register as a User</a>
                     </div>
 
                     <div class="text-center text-lg-start mt-4 pt-2">
-                    <input class="btn btn-primary btn-lg" name="action" type="submit" href="/Seller/register" value="Register">
-                        <p class="small fw-bold mt-2 pt-1 mb-0">Already have an account? <a href="index.php?resource=user&action=login"
+                    <input class="btn btn-primary btn-lg" name="action" type="submit" href="index.php?resource=user&action=register" value="Register">
+                        <p class="small fw-bold mt-2 pt-1 mb-0">Already have an account? <a href="index.php?resource=seller&action=login"
                             class="link-primary">Sign in</a></p>
                     </div>
 
@@ -102,12 +102,12 @@
 
 
 
-class UserRegister{
+class SellerRegister{
     
-    private $user;
+    private $seller;
 
-    function __construct($user){
-        $this->user = $user;
+    function __construct($seller){
+        $this->seller = $seller;
     }
 }
 
