@@ -61,10 +61,8 @@
                 
               }else{
                 $cartItems = 0;
-              }
-            }
-        }
-    }?>
+              }?>
+            
     
 
                   <div class="row mb-4 d-flex justify-content-between align-items-center">
@@ -99,11 +97,16 @@
                       <a href="/User/deleteFromCart/<?=$item->cart_id?>" class="text-muted"><i class="bi bi-x-lg"></i></a>
                     </div>
                   </div>
-
                   <hr class="my-4">
+           <?php
+                }
+              }
+          }?>
+
+                  
                   
                   <div class="pt-5">
-                    <h6 class="mb-0"><a href="/Main/index" class="text-body"><i
+                    <h6 class="mb-0"><a href="index.php?resource=user&action=home" class="text-body"><i
                           class="fas fa-long-arrow-alt-left me-2"></i>Back to shop</a></h6>
                   </div>
                 </div>
