@@ -34,7 +34,8 @@
                   <hr class="my-4">
 
     <?php 
-    class UserCart{
+    class CartList{
+      
         private $user;
         function __construct($user){
         $this->user = $user;
@@ -44,9 +45,8 @@
         }
 
         function render(...$data){
-        $products = $data[0];?>
-
-        <?php
+        $products = $data[0];
+        
         foreach($products as $item){?>
 
         <?php
@@ -101,9 +101,7 @@
            <?php
                 }
               }
-          }?>
-
-                  
+    }?>
                   
                   <div class="pt-5">
                     <h6 class="mb-0"><a href="index.php?resource=user&action=home" class="text-body"><i

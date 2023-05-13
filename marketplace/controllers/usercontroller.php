@@ -18,6 +18,7 @@ class UserController{
 
                 $products = $this->user->getAll();
 
+
                 if($action == 'login'){
                     if(isset($_POST['email']) && isset($_POST['password']) ){
 
